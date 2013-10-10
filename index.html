@@ -2,43 +2,52 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Diablo 3 Profile Viewer</title>
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+    <link rel="stylesheet/less" type="text/css" href="css/styles.less"/>
     <script src="js/libs/less-1.4.1.min.js"></script>
 </head>
 <body>
 
 <script type="text/x-handlebars">
-    <div class="header">
-        <h2 class="logo">Diablo 3 Profile Viewer</h2>
-        <nav class="nav">
-            <ul>
-                <li class="item">{{#linkTo 'index'}} Home {{/linkTo}}</li>
-                <li class="item">{{#linkTo 'profiles'}} Profiles {{/linkTo}}</li>
-            </ul>
-        </nav>
-    </div>
-    <div class="content">
-        {{outlet}}
+    <div class="logo"><img src="./images/d3_logo.png" alt="logo" /></div>
+    <div class="page">
+        <div class="header">
+            <nav class="nav">
+                <ul>
+                    <li class="item">{{#linkTo 'index'}} Home {{/linkTo}}</li>
+                    <li class="item">{{#linkTo 'profiles'}} Profiles {{/linkTo}}</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            {{outlet}}
+        </div>
     </div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="index">
     <div class="form">
-        <h2>Put you account name</h2>
-        <p>{{ input type="text" value=battleTag action='save' placeholder="Your BattleTag" }}</p>
+        <h2>Put your BattleTag</h2>
+        <p>{{ input type="text" action='save' value=battleTag placeholder="Your BattleTag" }}</p>
     </div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="profiles">
     <div class="profiles">
         <h3>Profiles page</h3>
-        <ul>
-            {{#each hero in model}}
-            <li>{{#linkTo 'profile' hero.id}} {{hero.id}} {{hero.name}} # {{hero.class}} - {{hero.level}} lvl {{/linkTo}}</li>
-            {{/each}}
-        </ul>
+
+        {{#each hero in model}}
+        <div class="portrait">
+            <div class="name">{{#linkTo 'profile' hero.id}} {{hero.name}} {{/linkTo}}</div>
+            <div class="icon">{{#linkTo 'profile' hero.id}} <img src="./images/portaits/{{unbound hero.class}}-portrait.png" alt="portrait" />{{/linkTo}}</div>
+            <div class="info">
+                <p>{{#linkTo 'profile' hero.id}} {{hero.level}} lvl {{/linkTo}}</p>
+            </div>
+        </div>
+        {{/each}}
+
     </div>
 </script>
 
@@ -47,41 +56,55 @@
     <div class="profile">
         <div class="hero">
             <h2 class="name">{{model.name}}</h2>
-            <img class="portrait" src="/d3/images/{{unbound model.class}}-male.gif" alt="class"/>
+
+            <div class="hero-icon">
+                <img src="/d3/images/{{unbound model.class}}-male.gif" alt="class"/>
+            </div>
+
             <div class="hero-data">
                 <p>Hero level : {{model.level}}</p>
                 <p>Paragon level : {{model.paragonLevel}}</p>
                 <p>Last updated time: {{model.last-updated}}</p>
                 <p>Elite kills : {{model.kills.elites}}</p>
             </div>
+
             <div class="hero-skills">
                 <h2 class="name">Skills</h2>
+
                 <div class="active">
                     {{#each skill in model.skills.active}}
-                    {{skill.skill.name}}<br />
-                    {{skill.skill.description}}<br />
-                    <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png" />
-                    {{skill.skill.categorySlug}}<br />
-                    <br />
-                    <br />
+                    {{skill.skill.name}}<br/>
+                    {{skill.skill.description}}<br/>
+                    <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
+                    {{skill.skill.categorySlug}}<br/>
+                    <br/>
+                    <br/>
                     {{/each}}
                 </div>
+
                 <div class="passive">
                     {{#each skill in model.skills.passive}}
-                    {{skill.skill.name}}<br />
-                    {{skill.skill.description}}<br />
-                    <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png" />
-                    {{skill.skill.categorySlug}}<br />
-                    <br />
-                    <br />
+                    {{skill.skill.name}}<br/>
+                    {{skill.skill.description}}<br/>
+                    <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
+                    {{skill.skill.categorySlug}}<br/>
+                    <br/>
+                    <br/>
                     {{/each}}
                 </div>
+
             </div>
+
             <div class="hero-items">
                 <h2 class="name">Items</h2>
+
                 <div class="item-list">
-                    Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}" onclick="return false;"><img src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png" /></a>
-                    Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}" onclick="return false;"><img src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png" /></a>
+                    Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}"
+                              onclick="return false;"><img
+                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png"/></a>
+                    Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}"
+                               onclick="return false;"><img
+                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png"/></a>
                 </div>
             </div>
         </div>
@@ -100,9 +123,9 @@
 <script>
     var b = Bnet.D3.Tooltips;
     b.registerDataOld = b.registerData;
-    b.registerData = function(data) {
-        var c = document.body.children, s = c[c.length-1].src;
-        data.params.key=s.substr(0,s.indexOf('?')).substr(s.lastIndexOf('/')+1);
+    b.registerData = function (data) {
+        var c = document.body.children, s = c[c.length - 1].src;
+        data.params.key = s.substr(0, s.indexOf('?')).substr(s.lastIndexOf('/') + 1);
         this.registerDataOld(data);
     }
 </script>
