@@ -2,65 +2,90 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Diablo 3 Heroes</title>
+    <title>Diablo 3 Profile Viewer</title>
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+    <script src="js/libs/less-1.4.1.min.js"></script>
 </head>
 <body>
 
 <script type="text/x-handlebars">
-    <h2>Welcome to Diablo3 Profile in Ember.js</h2>
-    {{outlet}}
-    <nav>
-        {{#linkTo 'index'}} Home {{/linkTo}}
-        {{#linkTo 'profiles'}} Profiles {{/linkTo}}
-    </nav>
+    <div class="header">
+        <h2 class="logo">Diablo 3 Profile Viewer</h2>
+        <nav class="nav">
+            <ul>
+                <li class="item">{{#linkTo 'index'}} Home {{/linkTo}}</li>
+                <li class="item">{{#linkTo 'profiles'}} Profiles {{/linkTo}}</li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content">
+        {{outlet}}
+    </div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="index">
-    <h3>Put you account name</h3>
-        <p>
-            {{ input type="text" value=battleTag action='save' placeholder="Your BattleTag" }}
-        </p>
-    </form>
+    <div class="form">
+        <h2>Put you account name</h2>
+        <p>{{ input type="text" value=battleTag action='save' placeholder="Your BattleTag" }}</p>
+    </div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="profiles">
-    <h3>Profiles page</h3>
-    <ul>
-        {{#each hero in model}}
-        <li>{{#linkTo 'profile' hero.id}} {{hero.id}} {{hero.name}} # {{hero.class}} - {{hero.level}} lvl {{/linkTo}}</li>
-        {{/each}}
-    </ul>
+    <div class="profiles">
+        <h3>Profiles page</h3>
+        <ul>
+            {{#each hero in model}}
+            <li>{{#linkTo 'profile' hero.id}} {{hero.id}} {{hero.name}} # {{hero.class}} - {{hero.level}} lvl {{/linkTo}}</li>
+            {{/each}}
+        </ul>
+    </div>
 </script>
 
 
 <script type="text/x-handlebars" data-template-name="profile">
-    <h3>{{model.name}}</h3>
-    <img src="/d3/images/{{unbound model.class}}-male.gif" alt="class" />
-    <br />
-    <br />
-    Hero level : {{model.level}}<br />
-    Paragon level : {{model.paragonLevel}}<br />
-    Last updated time: {{model.last-updated}}<br />
-    Elite kills : {{model.kills.elites}}<br />
-    <br />
-    <h4>Skills</h4>
-    {{#each skill in model.skills.active}}
-        {{skill.skill.name}}<br />
-        {{skill.skill.description}}<br />
-        <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png" />
-        {{skill.skill.categorySlug}}<br />
-        <br />
-    <br />
-    {{/each}}
-
-
-    <h4>Items</h4>
-    Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}" onclick="return false;"><img src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png" /></a>
-    Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}" onclick="return false;"><img src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png" /></a>
-
-
+    <div class="profile">
+        <div class="hero">
+            <h2 class="name">{{model.name}}</h2>
+            <img class="portrait" src="/d3/images/{{unbound model.class}}-male.gif" alt="class"/>
+            <div class="hero-data">
+                <p>Hero level : {{model.level}}</p>
+                <p>Paragon level : {{model.paragonLevel}}</p>
+                <p>Last updated time: {{model.last-updated}}</p>
+                <p>Elite kills : {{model.kills.elites}}</p>
+            </div>
+            <div class="hero-skills">
+                <h2 class="name">Skills</h2>
+                <div class="active">
+                    {{#each skill in model.skills.active}}
+                    {{skill.skill.name}}<br />
+                    {{skill.skill.description}}<br />
+                    <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png" />
+                    {{skill.skill.categorySlug}}<br />
+                    <br />
+                    <br />
+                    {{/each}}
+                </div>
+                <div class="passive">
+                    {{#each skill in model.skills.passive}}
+                    {{skill.skill.name}}<br />
+                    {{skill.skill.description}}<br />
+                    <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png" />
+                    {{skill.skill.categorySlug}}<br />
+                    <br />
+                    <br />
+                    {{/each}}
+                </div>
+            </div>
+            <div class="hero-items">
+                <h2 class="name">Items</h2>
+                <div class="item-list">
+                    Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}" onclick="return false;"><img src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png" /></a>
+                    Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}" onclick="return false;"><img src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </script>
 

@@ -1,0 +1,99 @@
+/* vars */
+@body-background-color : #111111;
+@header-background-color : red;
+@outerWidth: 960px;
+@borderWidth: 1px;
+@padding: 5px;
+
+/* Mixin */
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: 0px 0px @radius @radius;
+  -moz-border-radius: 0px 0px @radius @radius;
+  -ms-border-radius: 0px 0px @radius @radius;
+  -o-border-radius: 0px 0px @radius @radius;
+  border-radius: 0px 0px @radius @radius;
+}
+
+.box-shadow (@x: 0px, @y: 3px, @blur: 5px, @alpha: 0.5) {
+  -webkit-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+  -moz-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+  box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+}
+
+.transition (@prop: all, @time: 1s, @ease: linear) {
+  -webkit-transition: @prop @time @ease;
+  -moz-transition: @prop @time @ease;
+  -o-transition: @prop @time @ease;
+  -ms-transition: @prop @time @ease;
+  transition: @prop @time @ease;
+}
+
+.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+  background-color: @start;
+  background-image: -webkit-linear-gradient(@origin, @start, @stop);
+  background-image: -moz-linear-gradient(@origin, @start, @stop);
+  background-image: -o-linear-gradient(@origin, @start, @stop);
+  background-image: -ms-linear-gradient(@origin, @start, @stop);
+  background-image: linear-gradient(@origin, @start, @stop);
+}
+
+.reflect (@length: 50%, @opacity: 0.2) {
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(@length, transparent), to(rgba(255, 255, 255,@opacity)));
+}
+
+@base: #663333;
+@complement1: spin(@base, 180);
+@complement2: darken(spin(@base, 180), 5%);
+@lighten1: lighten(@base, 15%);
+@lighten2: lighten(@base, 30%);
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  width: @outerWidth - ( @borderWidth + @padding ) * 2;
+  border: @borderWidth solid #999;
+  padding: @padding;
+  margin: 0px auto;
+  text-align: center;
+  background: @body-background-color;
+}
+
+.header {
+  width: @outerWidth - ( @borderWidth + @padding ) * 2;
+  padding: @padding;
+  height: 48px;
+  margin: 0px auto;
+  padding: 0px;
+  background: @header-background-color;
+  .rounded-corners;
+
+  h2 {
+    font-size: 26px;
+    color: #ffffff;
+  }
+
+  nav.nav ul {
+    list-style: none;
+
+    li {
+      display: inline;
+      margin: 0;
+      padding: 0;
+
+      a {
+        color: #aaa;
+        font-size: 1em;
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+  }
+
+}
+
+
+
