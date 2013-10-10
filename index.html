@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Diablo 3 Heroes</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script type="text/x-handlebars">
+    <h2>Welcome to Diablo3 Profile in Ember.js</h2>
+    {{outlet}}
+    <nav>
+        {{#linkTo 'index'}} Home {{/linkTo}}
+        {{#linkTo 'profiles'}} Profiles {{/linkTo}}
+    </nav>
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+    <h3>Put you account name</h3>
+        <p>
+            {{ input type="text" value=battleTag action='save' placeholder="Your BattleTag" }}
+        </p>
+    </form>
+</script>
+
+<script type="text/x-handlebars" data-template-name="profiles">
+    <h3>Profiles page</h3>
+    <ul>
+        {{#each hero in model}}
+        <li>{{#linkTo 'profile' hero.id}} {{hero.id}} {{hero.name}} # {{hero.class}} - {{hero.level}} lvl {{/linkTo}}</li>
+        {{/each}}
+    </ul>
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="profile">
+    <h3>{{model.name}}</h3>
+    <img src="/d3/images/{{unbound model.class}}-male.gif" alt="class" />
+    <br />
+    <br />
+    Hero level : {{model.level}}<br />
+    Paragon level : {{model.paragonLevel}}<br />
+    Last updated time: {{model.last-updated}}<br />
+    Elite kills : {{model.kills.elites}}<br />
+    <br />
+    <h4>Skills</h4>
+    {{#each skill in model.skills.active}}
+        {{skill.skill.name}}<br />
+        {{skill.skill.description}}<br />
+        <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png" />
+        {{skill.skill.categorySlug}}<br />
+        <br />
+    <br />
+    {{/each}}
+
+
+    <h4>Items</h4>
+    Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}" onclick="return false;"><img src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png" /></a>
+    Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}" onclick="return false;"><img src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png" /></a>
+
+
+
+</script>
+
+
+<script src="js/libs/jquery-1.9.1.js"></script>
+<script src="js/libs/handlebars-1.0.0.js"></script>
+<script src="js/libs/ember-1.0.0.js"></script>
+<script src="js/libs/ember-data.js"></script>
+<script src="js/libs/showdown.js"></script>
+<script src="http://eu.battle.net/d3/static/js/tooltips.js"></script>
+<script src="js/app/app.js"></script>
+<script>
+    var b = Bnet.D3.Tooltips;
+    b.registerDataOld = b.registerData;
+    b.registerData = function(data) {
+        var c = document.body.children, s = c[c.length-1].src;
+        data.params.key=s.substr(0,s.indexOf('?')).substr(s.lastIndexOf('/')+1);
+        this.registerDataOld(data);
+    }
+</script>
+
+</body>
+</html>
