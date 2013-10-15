@@ -10,6 +10,8 @@ App.ProfileRoute = Ember.Route.extend({
     },
 
     serialize: function(model) {
-        return { profile_id: model.id };
+        return {
+            profile_id: model.id
+        };
     }
 });

@@ -15,6 +15,21 @@ App.Router.map(function () {
 });
 
 
+Handlebars.registerHelper("notEmptyResource", function(context) {
+   var secondaryResource = context.contexts[0].content.stats.secondaryResource;
+   if(secondaryResource != 0) {
+       return "/ "+secondaryResource;
+   }
+});
+
+Ember.Handlebars.registerBoundHelper('lastUpdated', function(value) {
+    var newDate = new Date();
+    newDate.setTime(value*1000);
+    var dateString = newDate.toUTCString();
+
+    return dateString;
+});
+
 
 /*Ember.Handlebars.helper('markdown', function(value) {
    var converter = new Showdown.converter();
