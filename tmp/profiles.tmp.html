@@ -1,0 +1,14 @@
+<div class="profiles">
+    <h3>Profiles page</h3>
+
+    {{#each hero in model}}
+    <div class="portrait">
+        <div class="name">{{#linkTo 'profile' hero.id}} {{hero.name}} {{/linkTo}}</div>
+        <div class="icon">{{#linkTo 'profile' hero.id}} <img src="./images/portaits/{{unbound hero.class}}-portrait.png" alt="portrait" />{{/linkTo}}</div>
+        <div class="info">
+            <p>{{#linkTo 'profile' hero.id}} {{hero.level}} lvl {{/linkTo}}</p>
+        </div>
+    </div>
+    {{/each}}
+
+</div>

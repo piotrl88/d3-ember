@@ -11,10 +11,12 @@
 <body>
 
 <script type="text/x-handlebars">
-    <div class="logo"><img src="./images/d3_logo.png" alt="logo" /></div>
+    <div class="logo">
+        <img src="./images/d3_logo.png" alt="logo" width="250" />
+    </div>
     <div class="page">
         <div class="header">
-            <nav class="nav">
+            <nav>
                 <ul>
                     <li class="item">{{#linkTo 'index'}} Home {{/linkTo}}</li>
                     <li class="item">{{#linkTo 'profiles'}} Profiles {{/linkTo}}</li>
@@ -29,7 +31,7 @@
 
 <script type="text/x-handlebars" data-template-name="index">
     <div class="form">
-        <h2>Put your BattleTag</h2>
+        <h2>Enter your BattleTag</h2>
         <p>{{ input type="text" action='save' value=battleTag placeholder="Your BattleTag" }}</p>
     </div>
 </script>
@@ -41,7 +43,7 @@
         {{#each hero in model}}
         <div class="portrait">
             <div class="name">{{#linkTo 'profile' hero.id}} {{hero.name}} {{/linkTo}}</div>
-            <div class="icon">{{#linkTo 'profile' hero.id}} <img src="./images/portaits/{{unbound hero.class}}-portrait.png" alt="portrait" />{{/linkTo}}</div>
+            <div class="icon">{{#linkTo 'profile' hero.id}} <img src="./images/portaits/{{unbound hero.class}}_portrait.jpg" alt="portrait" width="200" />{{/linkTo}}</div>
             <div class="info">
                 <p>{{#linkTo 'profile' hero.id}} {{hero.level}} lvl {{/linkTo}}</p>
             </div>
@@ -58,7 +60,7 @@
             <h2 class="name">{{model.name}}</h2>
 
             <div class="hero-icon">
-                <img src="/d3/images/{{unbound model.class}}-male.gif" alt="class"/>
+                <img src="/d3/images/animated/{{unbound model.class}}-male.gif" alt="class"/>
             </div>
 
             <div class="hero-data">
@@ -120,6 +122,9 @@
 <script src="js/libs/showdown.js"></script>
 <script src="http://eu.battle.net/d3/static/js/tooltips.js"></script>
 <script src="js/app/app.js"></script>
+<script src="js/app/controllers/controllers.js"></script>
+<script src="js/app/routers/routers.js"></script>
+<script src="js/app/views/views.js"></script>
 <script>
     var b = Bnet.D3.Tooltips;
     b.registerDataOld = b.registerData;

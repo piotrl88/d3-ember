@@ -1,0 +1,56 @@
+<div class="profile">
+    <div class="hero">
+        <h2 class="name">{{model.name}}</h2>
+
+        <div class="hero-icon">
+            <img src="/d3/images/{{unbound model.class}}-male.gif" alt="class"/>
+        </div>
+
+        <div class="hero-data">
+            <p>Hero level : {{model.level}}</p>
+            <p>Paragon level : {{model.paragonLevel}}</p>
+            <p>Last updated time: {{model.last-updated}}</p>
+            <p>Elite kills : {{model.kills.elites}}</p>
+        </div>
+
+        <div class="hero-skills">
+            <h2 class="name">Skills</h2>
+
+            <div class="active">
+                {{#each skill in model.skills.active}}
+                {{skill.skill.name}}<br/>
+                {{skill.skill.description}}<br/>
+                <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
+                {{skill.skill.categorySlug}}<br/>
+                <br/>
+                <br/>
+                {{/each}}
+            </div>
+
+            <div class="passive">
+                {{#each skill in model.skills.passive}}
+                {{skill.skill.name}}<br/>
+                {{skill.skill.description}}<br/>
+                <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
+                {{skill.skill.categorySlug}}<br/>
+                <br/>
+                <br/>
+                {{/each}}
+            </div>
+
+        </div>
+
+        <div class="hero-items">
+            <h2 class="name">Items</h2>
+
+            <div class="item-list">
+                Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}"
+                          onclick="return false;"><img
+                    src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png"/></a>
+                Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}"
+                           onclick="return false;"><img
+                    src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png"/></a>
+            </div>
+        </div>
+    </div>
+</div>
