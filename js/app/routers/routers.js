@@ -6,6 +6,7 @@ App.ProfilesRoute = Ember.Route.extend({
 
 App.ProfileRoute = Ember.Route.extend({
     model: function(params) {
+        console.log(params);
         return App.Profile.all(params.profile_id);
     },
 
@@ -13,5 +14,39 @@ App.ProfileRoute = Ember.Route.extend({
         return {
             profile_id: model.id
         };
+    },
+    redirect: function() {
+        this.transitionTo('profile.basic');
     }
 });
+
+App.ProfileBasicRoute = Ember.Route.extend({
+    /*renderTemplate : function (controller, model) {
+        this._super(controller, model);
+        this.render('basic', {outlet: 'basic'});
+    },*/
+    model: function(params) {
+        return this.modelFor('profile');
+    }
+});
+
+App.ProfileAdvanceRoute = Ember.Route.extend({
+    model: function(params) {
+        return this.modelFor('profile');
+    }
+});
+
+App.ProfileSkillsRoute = Ember.Route.extend({
+    model: function(params) {
+        return this.modelFor('profile');
+    }
+});
+
+App.ProfileEquipmentRoute = Ember.Route.extend({
+    model: function(params) {
+        return this.modelFor('profile');
+    }
+});
+
+
+

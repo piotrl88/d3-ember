@@ -43,7 +43,7 @@
         {{#each hero in model}}
         <div class="portrait">
             <div class="name">{{#linkTo 'profile' hero.id}} {{hero.name}} {{/linkTo}}</div>
-            <div class="icon">{{#linkTo 'profile' hero.id}} <img src="./images/portaits/{{unbound hero.class}}_portrait.jpg" alt="portrait" width="200" height="245" />{{/linkTo}}</div>
+            <div class="icon">{{#linkTo 'profile' hero.id}} <img src="./images/portaits/{{unbound hero.class}}_portrait.png" alt="portrait" width="200" height="200" />{{/linkTo}}</div>
             <div class="info">
                 <p>{{#linkTo 'profile' hero.id}} {{hero.level}} lvl {{/linkTo}}</p>
             </div>
@@ -57,13 +57,27 @@
 <script type="text/x-handlebars" data-template-name="profile">
     <div class="profile">
         <div class="hero">
+
+            <div class="hero-menu">
+                <div class="single">
+                    <p>{{#linkTo 'profile.basic'}}Basic{{/linkTo}}</p>
+                </div>
+                <div class="single">
+                    <p>{{#linkTo 'profile.advance'}}Advance{{/linkTo}}</p>
+                </div>
+                <div class="single">
+                    <p>{{#linkTo 'profile.skills'}}Skills{{/linkTo}}</p>
+                </div>
+                <div class="single">
+                    <p>{{#linkTo 'profile.equipment'}}Equipment{{/linkTo}}</p>
+                </div>
+            </div>
+
             <div class="hero-summary">
                 <span id="lastUpdated">{{lastUpdated model.last-updated}}</span>
                 <div class="line">
                     <h2>{{model.name}}</h2> {{model.level}} lvl ({{model.paragonLevel}} lvl)
                 </div>
-
-                <!--<p>Last updated time: {{model.last-updated}}</p>-->
             </div>
 
             <div class="hero-icon">
@@ -71,80 +85,7 @@
             </div>
 
             <div class="hero-data">
-                <h2>Basic stats</h2>
-
-                <div class="stats-basic">
-                    <div class="stats">
-                        <div class="icon">Damage: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.damage}}</div>
-                    </div>
-                    <div class="stats">
-                        <div class="icon">Armor: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.armor}}</div>
-                    </div>
-                    <div class="stats">
-                        <div class="icon">Dexterity: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.dexterity}}</div>
-                    </div>
-                    <div class="stats">
-                        <div class="icon">Intelligence: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.intelligence}}</div>
-                    </div>
-                    <div class="stats">
-                        <div class="icon">Strength: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.strength}}</div>
-                    </div>
-                    <div class="stats">
-                        <div class="icon">Vitality: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.vitality}}</div>
-                    </div>
-                </div>
-
-                <h3>Resists</h3>
-
-                <div class="stats-resists">
-                    <div class="resist">
-                        <div class="icon">Arcane: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.arcaneResist}}</div>
-                    </div>
-                    <div class="resist">
-                        <div class="icon">Cold: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.coldResist}}</div>
-                    </div>
-                    <div class="resist">
-                        <div class="icon">Fire: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.fireResist}}</div>
-                    </div>
-                    <div class="resist">
-                        <div class="icon">Lightning: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.lightningResist}}</div>
-                    </div>
-                    <div class="resist">
-                        <div class="icon">Physical: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.physicalResist}}</div>
-                    </div>
-                    <div class="resist">
-                        <div class="icon">Poison: <img src="" alt=""/></div>
-                        <div class="value">{{model.stats.poisonResist}}</div>
-                    </div>
-                </div>
-
-                <div class="stats-resource">
-                    <div class="life">
-                        <img src="images/resources/life_resource.gif" alt="life"/>
-                        <p>{{model.stats.life}}</p>
-                    </div>
-                    <div class="resource">
-                        <img src="./images/resources/{{unbound model.class}}_resource.gif" alt="resource"/>
-                        <p>
-                            {{model.stats.primaryResource}}
-                            {{notEmptyResource}}
-                        </p>
-                    </div>
-                </div>
-
-
-
+                {{outlet}}
             </div>
 
             <!--<div class="hero-skills">
@@ -189,6 +130,134 @@
         </div>
     </div>
 
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="profile/basic">
+    {{outlet}}
+    <h2>Basic stats</h2>
+
+    <div class="stats-basic">
+        <div class="stats">
+            <div class="icon">Damage: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.damage}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Armor: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.armor}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Dexterity: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.dexterity}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Intelligence: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.intelligence}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Strength: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.strength}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Vitality: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.vitality}}</div>
+        </div>
+    </div>
+
+    <h3>Resists</h3>
+
+    <div class="stats-resists">
+        <div class="resist">
+            <div class="icon">Arcane: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.arcaneResist}}</div>
+        </div>
+        <div class="resist">
+            <div class="icon">Cold: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.coldResist}}</div>
+        </div>
+        <div class="resist">
+            <div class="icon">Fire: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.fireResist}}</div>
+        </div>
+        <div class="resist">
+            <div class="icon">Lightning: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.lightningResist}}</div>
+        </div>
+        <div class="resist">
+            <div class="icon">Physical: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.physicalResist}}</div>
+        </div>
+        <div class="resist">
+            <div class="icon">Poison: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.poisonResist}}</div>
+        </div>
+    </div>
+
+    <div class="stats-resource">
+        <div class="life">
+            <img src="images/resources/life_resource.gif" alt="life"/>
+            <p>{{model.stats.life}}</p>
+        </div>
+        <div class="resource">
+            <img src="./images/resources/{{unbound model.class}}_resource.gif" alt="resource"/>
+            <p>
+                {{model.stats.primaryResource}}
+                {{notEmptyResource}}
+            </p>
+        </div>
+    </div>
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="profile/advance">
+    <h2>advance test</h2>
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="profile/skills">
+    <div class="hero-skills">
+        <h2 class="name">Skills</h2>
+
+        <div class="active">
+            {{#each skill in model.skills.active}}
+            {{skill.skill.name}}<br/>
+            {{skill.skill.description}}<br/>
+            <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
+            {{skill.skill.categorySlug}}<br/>
+            <br/>
+            <br/>
+            {{/each}}
+        </div>
+
+        <div class="passive">
+            {{#each skill in model.skills.passive}}
+            {{skill.skill.name}}<br/>
+            {{skill.skill.description}}<br/>
+            <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
+            {{skill.skill.categorySlug}}<br/>
+            <br/>
+            <br/>
+            {{/each}}
+        </div>
+
+    </div>
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="profile/equipment">
+    <div class="hero-items">
+        <h2 class="name">Items</h2>
+
+        <div class="item-list">
+            Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}"
+                      onclick="return false;"><img
+                src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png"/></a>
+            Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}"
+                       onclick="return false;"><img
+                src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png"/></a>
+        </div>
+    </div>
+    {{outlet}}
 </script>
 
 

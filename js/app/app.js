@@ -4,16 +4,24 @@ App = Em.Application.create({
     LOG_VIEW_LOOKUPS: true,
     LOG_STACKTRACE_ON_DEPRECATION: true,
     LOG_VERSION: true,
-    debugMode: true
+    LOG_ACTIVE_GENERATION: true
 });
 
 
 
 App.Router.map(function () {
     this.resource('profiles');
-    this.resource('profile', { path: '/profile/:profile_id' });
+    this.resource('profile', { path: '/profile/:profile_id' }, function() {
+        this.route('basic');
+        this.route('advance');
+        this.route('skills');
+        this.route('equipment');
+    });
 });
 
+/*App.Router.reopen({
+    location: 'history'
+});*/
 
 Handlebars.registerHelper("notEmptyResource", function(context) {
    var secondaryResource = context.contexts[0].content.stats.secondaryResource;
@@ -35,3 +43,4 @@ Ember.Handlebars.registerBoundHelper('lastUpdated', function(value) {
    var converter = new Showdown.converter();
     return new Handlebars.SafeString(converter.makeHtml(value));
 });*/
+
