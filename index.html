@@ -32,7 +32,8 @@
 <script type="text/x-handlebars" data-template-name="index">
     <div class="form">
         <h2>Enter your BattleTag</h2>
-        <p>{{ input type="text" action='save' value=battleTag placeholder="Your BattleTag" }}</p>
+        <p>{{ input type="text" action='save' id="battleTag" value=battleTag placeholder="Your BattleTag" }}</p>
+        <button {{ action "saveByBtn" }}>Enter</button>
     </div>
 </script>
 

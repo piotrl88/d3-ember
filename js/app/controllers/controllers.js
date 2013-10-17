@@ -4,6 +4,12 @@ App.IndexController = Ember.Controller.extend({
     },
     save: function (value) {
         localStorage.battleTag = value;
+        this.transitionToRoute('profiles');
+    },
+    saveByBtn: function () {
+        var yourTag = $("#battleTag").val();
+        localStorage.battleTag = yourTag;
+        this.transitionToRoute('profiles');
     }
 });
 

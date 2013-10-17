@@ -21,10 +21,6 @@ App.ProfileRoute = Ember.Route.extend({
 });
 
 App.ProfileBasicRoute = Ember.Route.extend({
-    /*renderTemplate : function (controller, model) {
-        this._super(controller, model);
-        this.render('basic', {outlet: 'basic'});
-    },*/
     model: function(params) {
         return this.modelFor('profile');
     }
