@@ -20,7 +20,7 @@ App.Profile.reopenClass({
         localStorage.profileId = profileId;
         return $.getJSON("http://eu.battle.net/api/d3/profile/" + battleTag + "/hero/"+profileId+"?callback=?").then(function (response) {
             var profile = response;
-            //console.log(profile);
+            console.log(profile);
             return profile;
         });
     }

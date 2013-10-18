@@ -23,7 +23,7 @@ App.Router.map(function () {
     location: 'history'
 });*/
 
-Handlebars.registerHelper("notEmptyResource", function(context) {
+Ember.Handlebars.registerHelper("notEmptyResource", function(context) {
    var secondaryResource = context.contexts[0].content.stats.secondaryResource;
    if(secondaryResource != 0) {
        return "/ "+secondaryResource;
@@ -36,6 +36,18 @@ Ember.Handlebars.registerBoundHelper('lastUpdated', function(value) {
     var dateString = newDate.toUTCString();
 
     return dateString;
+});
+
+Ember.Handlebars.registerBoundHelper("toPercent", function(value) {
+    var percentValue = (value * 100).toString()
+    var pos = percentValue.indexOf('.');
+    return percentValue.substr(0, pos+4)+"%";
+});
+
+Ember.Handlebars.registerBoundHelper("cutFor", function(value) {
+    var cutValue = value.toString();
+    var pos = cutValue.indexOf('.');
+    return cutValue.substr(0, pos+3);
 });
 
 

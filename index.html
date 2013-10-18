@@ -89,45 +89,6 @@
                 {{outlet}}
             </div>
 
-            <!--<div class="hero-skills">
-                <h2 class="name">Skills</h2>
-
-                <div class="active">
-                    {{#each skill in model.skills.active}}
-                    {{skill.skill.name}}<br/>
-                    {{skill.skill.description}}<br/>
-                    <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
-                    {{skill.skill.categorySlug}}<br/>
-                    <br/>
-                    <br/>
-                    {{/each}}
-                </div>
-
-                <div class="passive">
-                    {{#each skill in model.skills.passive}}
-                    {{skill.skill.name}}<br/>
-                    {{skill.skill.description}}<br/>
-                    <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
-                    {{skill.skill.categorySlug}}<br/>
-                    <br/>
-                    <br/>
-                    {{/each}}
-                </div>
-
-            </div>
-
-            <div class="hero-items">
-                <h2 class="name">Items</h2>
-
-                <div class="item-list">
-                    Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}"
-                              onclick="return false;"><img
-                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png"/></a>
-                    Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}"
-                               onclick="return false;"><img
-                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png"/></a>
-                </div>
-            </div>-->
         </div>
     </div>
 
@@ -211,8 +172,54 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="profile/advance">
-    <h2>advance test</h2>
     {{outlet}}
+    <h2>Advance stats</h2>
+    <div class="stats-basic">
+        <div class="stats">
+            <div class="icon">Attack speed: <img src="" alt=""/></div>
+            <div class="value">{{cutFor model.stats.attackSpeed}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Chance for critic: <img src="" alt=""/></div>
+            <div class="value">{{toPercent model.stats.critChance}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Critic damage: <img src="" alt=""/></div>
+            <div class="value">{{toPercent model.stats.critDamage}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Damage increased: <img src="" alt=""/></div>
+            <div class="value">{{toPercent model.stats.damageIncrease}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Damage reduction: <img src="" alt=""/></div>
+            <div class="value">{{toPercent model.stats.damageReduction}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Thorns: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.thorns}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Life on hit: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.lifeOnHit}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Life per Kill: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.lifePerKill}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Life steal: <img src="" alt=""/></div>
+            <div class="value">{{model.stats.lifeSteal}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Gold find: <img src="" alt=""/></div>
+            <div class="value">{{toPercent model.stats.goldFind}}</div>
+        </div>
+        <div class="stats">
+            <div class="icon">Magic find: <img src="" alt=""/></div>
+            <div class="value">{{toPercent model.stats.magicFind}}</div>
+        </div>
+    </div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="profile/skills">
