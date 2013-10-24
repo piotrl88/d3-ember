@@ -46,7 +46,7 @@ Ember.Handlebars.registerBoundHelper("cutFor", function(value) {
 
 Ember.Handlebars.registerBoundHelper("loadHeroGif", function(value) {
     var image = new Image();
-    image.src = "/d3/images/animated/"+value+"-male.gif";
+    image.src = "images/animated/"+value+"-male.gif";
     $(image).load(function() {
         console.log("ok");
         $('.hero-icon').html(this);
