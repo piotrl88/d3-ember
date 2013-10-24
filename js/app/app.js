@@ -7,8 +7,6 @@ App = Em.Application.create({
     LOG_ACTIVE_GENERATION: true
 });
 
-
-
 App.Router.map(function () {
     this.resource('profiles');
     this.resource('profile', { path: '/profile/:profile_id' }, function() {
@@ -18,10 +16,6 @@ App.Router.map(function () {
         this.route('equipment');
     });
 });
-
-/*App.Router.reopen({
-    location: 'history'
-});*/
 
 Ember.Handlebars.registerHelper("notEmptyResource", function(context) {
    var secondaryResource = context.contexts[0].content.stats.secondaryResource;
@@ -55,4 +49,3 @@ Ember.Handlebars.registerBoundHelper("cutFor", function(value) {
    var converter = new Showdown.converter();
     return new Handlebars.SafeString(converter.makeHtml(value));
 });*/
-
