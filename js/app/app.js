@@ -44,6 +44,17 @@ Ember.Handlebars.registerBoundHelper("cutFor", function(value) {
     return cutValue.substr(0, pos+3);
 });
 
+Ember.Handlebars.registerBoundHelper("loadHeroGif", function(value) {
+    var image = new Image();
+    image.src = "/d3/images/animated/"+value+"-male.gif";
+    $(image).load(function() {
+        console.log("ok");
+        $('.hero-icon').html(this);
+        console.log(this);
+    });
+
+});
+
 
 /*Ember.Handlebars.helper('markdown', function(value) {
    var converter = new Showdown.converter();
