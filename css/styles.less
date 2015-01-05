@@ -91,8 +91,8 @@
 @lighten2: lighten(@base, 30%);
 
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {
@@ -100,18 +100,24 @@
   src: url('./fonts/Exocet_Light.ttf');
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  font-family: Exocet;
-  padding: @padding @padding 0px @padding;
-  margin: 0px auto;
+  font-family: Exocet, sans-serif;
+  padding: @padding @padding 0 @padding;
+  box-sizing: border-box;
+  margin: 0 auto;
+  height: 100%;
   text-align: center;
   color: #ffffff;
-  background-color: #1B242B;
-  background: url('../images/bg.jpg') no-repeat top center;
+  background: #1B242B url('../images/bg.jpg') no-repeat top center;
+  background-size: cover;
 }
 
 .logo {
-  padding: 0px;
+  padding: 0;
   position: absolute;
   z-index: 1;
   top: -40px;
@@ -119,9 +125,9 @@ body {
 }
 
 .page {
-  height: 630px;
-  margin: 50px auto 0px auto;
-  padding: 0px;
+  height: 100%;
+  margin: 50px auto 0 auto;
+  padding: 0;
 
 
   input[type=text] {
@@ -132,9 +138,7 @@ body {
     width: @outerWidth - ( @borderWidth + @padding ) * 2;
     padding: @padding;
     height: 60px;
-    margin: 0px auto;
-    padding: 0px;
-
+    margin: 0 auto;
 
     h2 {
       font-size: 26px;
@@ -145,8 +149,8 @@ body {
       display: block;
       width: 200px;
       height: 50px;
-      margin: 0px;
-      padding: 0px;
+      margin: 0;
+      padding: 0;
       float: right;
 
 
