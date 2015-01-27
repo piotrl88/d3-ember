@@ -41,6 +41,21 @@
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(@length, transparent), to(rgba(255, 255, 255,@opacity)));
 }
 
+.float-left {
+  float: left;
+  margin: 10px;
+}
+
+.push-left {
+  text-align: left;
+  padding: 10px 0;
+}
+
+.push-right {
+  text-align: right;
+  padding: 10px 0;
+}
+
 .anchors {
   color: #aaa;
   font-size: 1em;
@@ -172,8 +187,8 @@ body {
   .content {
     width: 1050px;
     height: 550px;
-    margin: 0px auto;
-    padding: 0px;
+    margin: 0 auto;
+    padding: 0;
     overflow-y: scroll;
     overflow-x: hidden;
       
@@ -183,14 +198,14 @@ body {
 
     .profiles {
       width: 1000px;
-      margin: 0px auto;
+      margin: 0 auto;
       padding: 0px;
 
       .portrait {
         width: 250px;
         height: 300px;
-        margin: 0px 0px 20px 0px;
-        padding: 0px;
+        margin: 0 0 20px 0;
+        padding: 0;
         float: left;
       }
     }
@@ -201,21 +216,21 @@ body {
       padding: 0px;
 
       .hero {
-        margin: 0px auto;
-        padding: 0px;
+        margin: 0 auto;
+        padding: 0;
 
         .hero-menu {
           width: 480px;
           height: 40px;
-          margin: 0px;
-          padding: 0px;
+          margin: 0;
+          padding: 0;
           float: right;
 
           .single {
             width: 120px;
             height: 40px;
-            margin: 0px auto;
-            padding: 0px;
+            margin: 0 auto;
+            padding: 0;
             float: left;
           }
         }
@@ -252,7 +267,7 @@ body {
           margin: 10px;
           padding: 0px;
           float: left;
-          border: 3px solid #red;
+          border: 3px solid #ff0000;
           .box-shadow();
         }
 
@@ -333,8 +348,8 @@ body {
           
           .stats-resource {
             width: 300px;
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
             float: left;
 
             img {
@@ -349,8 +364,8 @@ body {
                 position: relative;
                 z-index: 1;
                 top: -75px;
-                left: 0px;
-                right: 0px;
+                left: 0;
+                right: 0;
                 margin-right: auto;
                 margin-left: 15px;
                 font-size: 16px;
@@ -364,8 +379,8 @@ body {
                 position: relative;
                 z-index: 1;
                 top: -75px;
-                left: 0px;
-                right: 0px;
+                left: 0;
+                right: 0;
                 margin-right: 15px;
                 margin-left: auto;
                 font-size: 16px;

@@ -7,8 +7,7 @@ App.IndexController = Ember.Controller.extend({
         this.transitionToRoute('profiles');
     },
     saveByBtn: function () {
-        var yourTag = $("#battleTag").val();
-        localStorage.battleTag = yourTag;
+        localStorage.battleTag = $("#battleTag").val();
         this.transitionToRoute('profiles');
     }
 });

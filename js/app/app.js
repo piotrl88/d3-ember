@@ -33,7 +33,7 @@ Ember.Handlebars.registerBoundHelper('lastUpdated', function(value) {
 });
 
 Ember.Handlebars.registerBoundHelper("toPercent", function(value) {
-    var percentValue = (value * 100).toString()
+    var percentValue = (value * 100).toString();
     var pos = percentValue.indexOf('.');
     return percentValue.substr(0, pos+4)+"%";
 });
@@ -48,9 +48,7 @@ Ember.Handlebars.registerBoundHelper("loadHeroGif", function(value) {
     var image = new Image();
     image.src = "images/animated/"+value+"-male.gif";
     $(image).load(function() {
-        console.log("ok");
         $('.hero-icon').html(this);
-        console.log(this);
     });
 
 });

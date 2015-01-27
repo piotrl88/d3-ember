@@ -6,7 +6,6 @@ App.ProfilesRoute = Ember.Route.extend({
 
 App.ProfileRoute = Ember.Route.extend({
     model: function(params) {
-        console.log(params);
         return App.Profile.all(params.profile_id);
     },
 

@@ -176,47 +176,47 @@
     <h2>Advance stats</h2>
     <div class="stats-basic">
         <div class="stats">
-            <div class="icon">Attack speed: <img src="" alt=""/></div>
+            <div class="icon">Attack speed: </div>
             <div class="value">{{cutFor model.stats.attackSpeed}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Chance for critic: <img src="" alt=""/></div>
+            <div class="icon">Chance for critic: </div>
             <div class="value">{{toPercent model.stats.critChance}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Critic damage: <img src="" alt=""/></div>
+            <div class="icon">Critic damage: </div>
             <div class="value">{{toPercent model.stats.critDamage}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Damage increased: <img src="" alt=""/></div>
+            <div class="icon">Damage increased: </div>
             <div class="value">{{toPercent model.stats.damageIncrease}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Damage reduction: <img src="" alt=""/></div>
+            <div class="icon">Damage reduction: </div>
             <div class="value">{{toPercent model.stats.damageReduction}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Thorns: <img src="" alt=""/></div>
+            <div class="icon">Thorns: </div>
             <div class="value">{{model.stats.thorns}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Life on hit: <img src="" alt=""/></div>
+            <div class="icon">Life on hit: </div>
             <div class="value">{{model.stats.lifeOnHit}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Life per Kill: <img src="" alt=""/></div>
+            <div class="icon">Life per Kill: </div>
             <div class="value">{{model.stats.lifePerKill}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Life steal: <img src="" alt=""/></div>
+            <div class="icon">Life steal: </div>
             <div class="value">{{model.stats.lifeSteal}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Gold find: <img src="" alt=""/></div>
+            <div class="icon">Gold find: </div>
             <div class="value">{{toPercent model.stats.goldFind}}</div>
         </div>
         <div class="stats">
-            <div class="icon">Magic find: <img src="" alt=""/></div>
+            <div class="icon">Magic find: </div>
             <div class="value">{{toPercent model.stats.magicFind}}</div>
         </div>
     </div>
@@ -227,24 +227,24 @@
         <h2 class="name">Skills</h2>
 
         <div class="active">
+            <h2>Active</h2>
             {{#each skill in model.skills.active}}
-            {{skill.skill.name}}<br/>
-            {{skill.skill.description}}<br/>
-            <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
-            {{skill.skill.categorySlug}}<br/>
-            <br/>
-            <br/>
+                <div class="push-left"><img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/></div>
+                <div class="push-left"><h3>{{skill.skill.name}}</h3></div>
+                <div class="push-left"><p>{{skill.skill.description}}</p></div>
             {{/each}}
         </div>
 
+        <hr/>
+
         <div class="passive">
+            <h2>Passive</h2>
             {{#each skill in model.skills.passive}}
-            {{skill.skill.name}}<br/>
-            {{skill.skill.description}}<br/>
-            <img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/>
-            {{skill.skill.categorySlug}}<br/>
-            <br/>
-            <br/>
+            <p>
+                <div class="push-left"><img src="http://us.media.blizzard.com/d3/icons/skills/64/{{unbound skill.skill.icon}}.png"/></div>
+                <div class="push-left">{{skill.skill.name}}</div>
+                <div class="push-left">{{skill.skill.description}}</div>
+            </p>
             {{/each}}
         </div>
 
@@ -257,12 +257,42 @@
         <h2 class="name">Items</h2>
 
         <div class="item-list">
-            Head : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}"
-                      onclick="return false;"><img
-                src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png"/></a>
-            Torso : <a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}"
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.head.tooltipParams }}"
                        onclick="return false;"><img
-                src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png"/></a>
+                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.head.icon}}.png"/></a></div>
+
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.torso.tooltipParams }}"
+                       onclick="return false;"><img
+                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.torso.icon}}.png"/></a></div>
+
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.legs.tooltipParams }}"
+                       onclick="return false;"><img
+                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.legs.icon}}.png"/></a></div>
+
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.neck.tooltipParams }}"
+                       onclick="return false;"><img
+                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.neck.icon}}.png"/></a></div>
+
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.shoulders.tooltipParams }}"
+                       onclick="return false;"><img
+                        src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.shoulders.icon}}.png"/></a></div>
+
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.bracers.tooltipParams }}"
+                                       onclick="return false;"><img
+                    src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.bracers.icon}}.png"/></a></div>
+
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.feet.tooltipParams }}"
+                                       onclick="return false;"><img
+                    src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.feet.icon}}.png"/></a></div>
+
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.mainHand.tooltipParams }}"
+                                       onclick="return false;"><img
+                    src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.mainHand.icon}}.png"/></a></div>
+
+                <div class="float-left"><a href="http://eu.battle.net/d3/pl/{{unbound model.items.offHand.tooltipParams }}"
+                                       onclick="return false;"><img
+                    src="http://us.media.blizzard.com/d3/icons/items/large/{{unbound model.items.offHand.icon}}.png"/></a></div>
+
         </div>
     </div>
     {{outlet}}
